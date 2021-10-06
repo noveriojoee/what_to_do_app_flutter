@@ -28,11 +28,11 @@ class _MainPageState extends State<MainPage> {
       ),
       body: Center(
         child: Container(
-          child: Text("what to do app $num"),
+          child: Text("what to do app $num", textAlign: TextAlign.left),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           setState(() {
             num++;
           });
