@@ -3,26 +3,25 @@ import 'package:flutter/rendering.dart';
 import 'package:what_to_do_app/Screens/TaskScreen.dart';
 
 class MainPage extends StatefulWidget {
-	_MainPageState createState() => _MainPageState();
+  _MainPageState createState() => _MainPageState();
 }
 
 Route _createRoute() {
-	return PageRouteBuilder(
-		pageBuilder: (context, animation, secondaryAnimation) => TaskScreen(),
-		transitionsBuilder: (context, animation, secondaryAnimation, child) {
-			const begin = Offset(0.0, 1.0);
-			const end = Offset.zero;
-			final tween = Tween(begin: begin, end: end);
-			final offsetAnimation = animation.drive(tween);
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => TaskScreen(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      final tween = Tween(begin: begin, end: end);
+      final offsetAnimation = animation.drive(tween);
 
-			return SlideTransition(
-				position: offsetAnimation,
-				child: child,
-			);
-		},
-	);
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
-
 
 class _MainPageState extends State<MainPage> {
   int _num = 0;
@@ -30,7 +29,7 @@ class _MainPageState extends State<MainPage> {
   void _buttonAddClick(BuildContext context) {
     setState(() {
       //Do Something when button on clicked
-			Navigator.of(context).push(_createRoute());
+      Navigator.of(context).push(_createRoute());
     });
   }
 
@@ -38,22 +37,17 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-					setState(() {
-						//Do Something when button on clicked
-						Navigator.of(context).push(_createRoute());
-					});
-				},
+        onPressed: () => _buttonAddClick(context),
         child: Icon(Icons.add),
       ),
       body: SafeArea(
         child: Container(
-					color: Colors.lightBlue,
+          color: Colors.lightBlue,
           child: Column(
-						crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-								margin: EdgeInsets.only(top:50, left: 0),
+                margin: EdgeInsets.only(top: 50, left: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -73,17 +67,26 @@ class _MainPageState extends State<MainPage> {
                     Container(
                       child: Text(
                         "What To Do! $_num",
-                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.w300),
                       ),
                     ),
                   ],
                 ),
               ),
-						Container(
-							height:473,
-							margin: EdgeInsets.only(top: 25),
-							color: Colors.green,
-						)],
+              Expanded(
+                child: Container(
+									decoration: BoxDecoration(
+										color: Colors.green,
+										borderRadius: BorderRadius.only(
+											topLeft: Radius.circular(30),
+											topRight: Radius.circular(30)
+										)
+									),
+                  margin: EdgeInsets.only(top: 25),
+                ),
+              )
+            ],
           ),
         ),
       ),
