@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:what_to_do_app/Navigation.dart';
 import 'package:what_to_do_app/Components/ListViewWidget.dart';
 import 'package:what_to_do_app/Screens/PopUp/AddTaskScreen.dart';
+import 'package:what_to_do_app/Models/TaskModel.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
@@ -13,18 +13,30 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _num = 0;
+  List<TaskModel> models = [
+    TaskModel("Buying bread", false),
+    TaskModel("Buying papper", false),
+    TaskModel("Buying ciggrate", false)
+  ];
 
   void _buttonAddClick(BuildContext context) {
-    setState(() {
-      //Do Something when button on clicked
+    //Do Something when button on clicked
 //      Navigator.of(context).push(createRoute('addTask'));
-      showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
+
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: false,
           builder: (context) => SingleChildScrollView(
-						child: Container(padding : EdgeInsets.only(bottom:MediaQuery.of(context).viewInsets.bottom),child: AddTaskScreen()),
-					));
-    });
+                child: Container(
+                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: AddTaskScreen((context, taskString) {
+                    	setState(() {
+                    		Navigator.pop(context);
+                    		models.add(TaskModel(taskString, false));
+                    		_num = models.length;
+                    	});
+                    }))
+        ));
   }
 
   @override
@@ -78,7 +90,7 @@ class _MainPageState extends State<MainPage> {
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30))),
                   margin: EdgeInsets.only(top: 25),
-                  child: ListViewWidget(),
+                  child: ListViewWidget(models),
                 ),
               )
             ],

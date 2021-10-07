@@ -3,17 +3,17 @@ import 'package:what_to_do_app/Components/ListViewTaskItem.dart';
 import 'package:what_to_do_app/Models/TaskModel.dart';
 
 class ListViewWidget extends StatefulWidget {
+	List<TaskModel> models;
+
+	ListViewWidget(this.models);
+
   @override
-  State<ListViewWidget> createState() => _ListViewWidgetState();
+  State<ListViewWidget> createState() {
+  	return _ListViewWidgetState();
+	}
 }
 
 class _ListViewWidgetState extends State<ListViewWidget> {
-  List<TaskModel> models = [
-    TaskModel("Buying bread", false),
-    TaskModel("Buying papper", false),
-		TaskModel("Buying ciggrate", false)
-  ];
-
   void onTaskChecked(TaskModel model, bool newValue) {
     setState(() {
       model.toogleIsDone();
@@ -34,10 +34,10 @@ class _ListViewWidgetState extends State<ListViewWidget> {
     return ListView.builder(
 			itemBuilder: (context, index) {
 				return ListViewTaskItem(
-          models[index].isDone,
-          models[index].taskDescription,
-          (newValue) => onTaskChecked(models[index], newValue));
+          widget.models[index].isDone,
+					widget.models[index].taskDescription,
+          (newValue) => onTaskChecked(widget.models[index], newValue));
     },
-		itemCount: models.length,);
+		itemCount: widget.models.length,);
   }
 }

@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AddTaskScreen extends StatefulWidget {
-  @override
-  State<AddTaskScreen> createState() => _AddTaskScreenState();
-}
-
-class _AddTaskScreenState extends State<AddTaskScreen> {
+class AddTaskScreen extends StatelessWidget {
 	String _task;
+	Function onTaskAdd;
 
-	void _buttonAddClick(context){
-
-	}
+  AddTaskScreen(this.onTaskAdd);
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +17,27 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30))),
         child: Container(
-					padding: EdgeInsets.all(30.0),
+          padding: EdgeInsets.all(30.0),
           child: Column(
-					crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
                 "Add your task here ..",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25),
               ),
-						TextField(textAlign: TextAlign.center, autofocus: true,),
-						FlatButton(onPressed: ()=>_buttonAddClick(context),
-							color: Colors.lightBlueAccent,
-							child: Text("ADD"),)
+              TextField(
+                textAlign: TextAlign.center,
+                autofocus: true,
+                onChanged: (newValue) {
+                  _task = newValue;
+                },
+              ),
+              FlatButton(
+                onPressed: () => onTaskAdd(context, _task),
+                color: Colors.lightBlueAccent,
+                child: Text("ADD"),
+              )
             ],
           ),
         ),

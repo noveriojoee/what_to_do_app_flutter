@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:what_to_do_app/Screens/PopUp/AddTaskScreen.dart';
+import 'package:what_to_do_app/Screens/DetailScreen.dart';
 
 Route createRoute(String navigation) {
 	if (navigation == "addTask"){
 		return PageRouteBuilder(
-			pageBuilder: (context, animation, secondaryAnimation)=>AddTaskScreen(),
+			pageBuilder: (context, animation, secondaryAnimation)=>DetailScreen(),
 			transitionsBuilder: (context, animation, secondaryAnimation, child) {
 				const begin = Offset(0.0, 1.0);
 				const end = Offset.zero;
