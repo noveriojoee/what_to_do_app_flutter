@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AddTaskScreen extends StatelessWidget {
-	int _num = 0;
+class AddTaskScreen extends StatefulWidget {
+  @override
+  State<AddTaskScreen> createState() => _AddTaskScreenState();
+}
 
-	void _buttonAddClick(BuildContext context){
+class _AddTaskScreenState extends State<AddTaskScreen> {
+	String _task;
 
-		_num++;
+	void _buttonAddClick(context){
+
 	}
 
   @override
@@ -24,7 +28,7 @@ class AddTaskScreen extends StatelessWidget {
 					crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                "Add your task here .. $_num",
+                "Add your task here ..",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25),
               ),
