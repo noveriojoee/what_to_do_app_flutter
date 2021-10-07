@@ -22,7 +22,6 @@ class _MainPageState extends State<MainPage> {
   void _buttonAddClick(BuildContext context) {
     //Do Something when button on clicked
 //      Navigator.of(context).push(createRoute('addTask'));
-
     showModalBottomSheet(
         context: context,
         isScrollControlled: false,
