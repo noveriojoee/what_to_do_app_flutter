@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:what_to_do_app/Screens/MainPage.dart';
-import 'package:what_to_do_app/Screens/TaskScreen.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,26 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:what_to_do_app/Screens/TaskScreen.dart';
+import 'package:what_to_do_app/Navigation.dart';
+import 'package:what_to_do_app/Components/ListViewWidget.dart';
+import 'package:what_to_do_app/Screens/PopUp/AddTaskScreen.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({
+    Key key,
+  }) : super(key: key);
   _MainPageState createState() => _MainPageState();
-}
-
-Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => TaskScreen(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0);
-      const end = Offset.zero;
-      final tween = Tween(begin: begin, end: end);
-      final offsetAnimation = animation.drive(tween);
-
-      return SlideTransition(
-        position: offsetAnimation,
-        child: child,
-      );
-    },
-  );
 }
 
 class _MainPageState extends State<MainPage> {
@@ -29,7 +17,13 @@ class _MainPageState extends State<MainPage> {
   void _buttonAddClick(BuildContext context) {
     setState(() {
       //Do Something when button on clicked
-      Navigator.of(context).push(_createRoute());
+//      Navigator.of(context).push(createRoute('addTask'));
+      showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          builder: (context) => SingleChildScrollView(
+						child: Container(padding : EdgeInsets.only(bottom:MediaQuery.of(context).viewInsets.bottom),child: AddTaskScreen()),
+					));
     });
   }
 
@@ -47,6 +41,7 @@ class _MainPageState extends State<MainPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 margin: EdgeInsets.only(top: 50, left: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,11 +51,11 @@ class _MainPageState extends State<MainPage> {
                         child: CircleAvatar(
                           child: Icon(
                             Icons.list_rounded,
-                            color: Colors.white,
+                            color: Colors.lightBlue,
                             size: 75,
                           ),
                           radius: 50,
-                          backgroundColor: Colors.black,
+                          backgroundColor: Colors.white,
                         ),
                       ),
                     ),
@@ -76,14 +71,14 @@ class _MainPageState extends State<MainPage> {
               ),
               Expanded(
                 child: Container(
-									decoration: BoxDecoration(
-										color: Colors.green,
-										borderRadius: BorderRadius.only(
-											topLeft: Radius.circular(30),
-											topRight: Radius.circular(30)
-										)
-									),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
                   margin: EdgeInsets.only(top: 25),
+                  child: ListViewWidget(),
                 ),
               )
             ],
