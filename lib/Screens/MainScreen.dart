@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
+import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  bool _isCheck = false;
   void showMessage(BuildContext context) {
     showDialog<String>(
       context: context,
@@ -45,14 +47,20 @@ class _MainScreenState extends State<MainScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           BaseAppBarWidget(),
-          ListView(
-            children: const <Widget>[
-              
-
-            ],
-          )
+          Expanded(
+              child: Container(
+            padding: EdgeInsets.all(20),
+            child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (context, index) {
+                return ListItemTile(isCheck: false, text: 'xx');
+              },
+            ),
+          )),
         ],
       )),
     );
   }
 }
+
+
