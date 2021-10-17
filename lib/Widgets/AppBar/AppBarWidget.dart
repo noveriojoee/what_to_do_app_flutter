@@ -9,25 +9,25 @@ class BaseAppBarWidget extends StatelessWidget {
     return Container(
       color: Colors.lightBlue,
       child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              child: Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.white),
-                child: Icon(
-                  Icons.list,
-                  color: Colors.lightBlue,
-                  size: 50,
+        child: Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white),
+                  child: Icon(
+                    Icons.list,
+                    color: Colors.lightBlue,
+                    size: 50,
+                  ),
                 ),
               ),
-            ),
-            Text('What To Do ?')
-          ],
+              Text('What To Do ?')
+            ],
+          ),
         ),
       ),
     );
