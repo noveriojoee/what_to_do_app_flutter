@@ -8,8 +8,10 @@ class BaseAppBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.lightBlue,
+      height: 280,
       child: SafeArea(
-        child: Expanded(
+        child: Container(
+          margin: EdgeInsets.only(top: 20,left: 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -21,11 +23,12 @@ class BaseAppBarWidget extends StatelessWidget {
                   child: Icon(
                     Icons.list,
                     color: Colors.lightBlue,
-                    size: 50,
+                    size: 100,
                   ),
                 ),
               ),
-              Text('What To Do ?')
+              SizedBox(height: 20,),
+              Text('What To Do ?',style: TextStyle(fontSize: 30),)
             ],
           ),
         ),
