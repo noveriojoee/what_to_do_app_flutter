@@ -12,7 +12,11 @@ class ListItemTile extends StatelessWidget {
         _text = text,
         _onListChecked = onListChecked,
         super(key: key);
-        
+
+  void toogleCheck(){
+    _isCheck = !_isCheck;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -27,8 +31,7 @@ class ListItemTile extends StatelessWidget {
       trailing: Checkbox(
         value: false,
         onChanged: (value) {
-          _isCheck = !_isCheck;
-          _onListChecked(_isCheck);
+          _onListChecked(this);
         },
       ),
     );
