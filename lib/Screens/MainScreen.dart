@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:what_to_do_app/Screens/AddTaskScreen.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
 import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
 
@@ -10,7 +11,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  bool _isCheck = false;
   void showMessage(BuildContext context) {
     showDialog<String>(
       context: context,
@@ -31,13 +31,30 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
+  void showAddTaskScreen(BuildContext context,String detailScreen) {
+    if (detailScreen == 'bottom') {
+      showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AddTaskScreen();
+        },
+      );
+    }else{
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => AddTaskScreen()),
+    );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            showMessage(context);
+            showAddTaskScreen(context,'push');
           });
         },
         child: Icon(Icons.add),
@@ -53,7 +70,11 @@ class _MainScreenState extends State<MainScreen> {
             child: ListView.builder(
               itemCount: 20,
               itemBuilder: (context, index) {
-                return ListItemTile(isCheck: false, text: 'xx');
+                return ListItemTile(
+                  isCheck: false,
+                  text: 'xx',
+                  onListChecked: (value) {},
+                );
               },
             ),
           )),
@@ -62,5 +83,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
-
