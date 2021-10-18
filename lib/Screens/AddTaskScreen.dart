@@ -10,14 +10,19 @@ class AddTaskScreen extends StatefulWidget {
 class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Expanded(
-          child: Column(
-            children: <Widget>[Text('Task'), Text('Description')],
-          ),
-        ),
-      ),
-    );
+    return Container(
+      color: Colors.white,
+      height: 1000,
+      width: 100,
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+          Text('Task Title' ,style: TextStyle(color: Colors.black, fontSize:20),),
+          TextField(),
+          Text('Task Description' ,style: TextStyle(color: Colors.black, fontSize: 20),),
+          TextField(),
+    ],),
+      ),);
   }
 }

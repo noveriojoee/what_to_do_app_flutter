@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:what_to_do_app/Navigation.dart';
 import 'package:what_to_do_app/Screens/AddTaskScreen.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
 import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
@@ -40,10 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         },
       );
     }else{
-      Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => AddTaskScreen()),
-    );
+      Navigator.of(context).pushNamed('/addTaskScreen');
     }
   }
 
