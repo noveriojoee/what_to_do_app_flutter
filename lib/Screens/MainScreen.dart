@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:what_to_do_app/Data/TaskData.dart';
 import 'package:what_to_do_app/Screens/AddTaskScreen.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
-import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
 import 'package:what_to_do_app/Widgets/Views/WhatToDoListViewWidget.dart';
 
 class MainScreen extends StatelessWidget {
