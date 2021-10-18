@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'package:what_to_do_app/Data/TaskData.dart';
 
 class BaseAppBarWidget extends StatelessWidget {
   BaseAppBarWidget({Key? key}) : super(key: key);
@@ -28,7 +30,9 @@ class BaseAppBarWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20,),
-              Text('What To Do ?',style: TextStyle(fontSize: 30),)
+              Text('What To Do ?',style: TextStyle(fontSize: 30),),
+              SizedBox(height: 5,),
+              Text('Remaining Task ${Provider.of<TaskData>(context).models!.length}',style: TextStyle(fontSize: 15),)
             ],
           ),
         ),
