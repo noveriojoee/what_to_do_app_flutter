@@ -21,4 +21,9 @@ class TaskData extends ChangeNotifier {
     models!.removeAt(index);
     notifyListeners();
   }
+
+  void toogleDone(int index){
+    models![index].isDone = !models![index].isDone;
+    notifyListeners();
+  }
 }

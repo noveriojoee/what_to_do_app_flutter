@@ -4,6 +4,7 @@ import 'package:what_to_do_app/Data/TaskData.dart';
 import 'package:what_to_do_app/Screens/AddTaskScreen.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
 import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
+import 'package:what_to_do_app/Widgets/Views/WhatToDoListViewWidget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -76,22 +77,12 @@ class MainScreen extends StatelessWidget {
           Expanded(
               child: Container(
             padding: EdgeInsets.all(20),
-            child: ListView.builder(
-              itemCount: Provider.of<TaskData>(context).models!.length,
-              itemBuilder: (context, index) {
-                return ListItemTile(
-                  isCheck: Provider.of<TaskData>(context).models![index].isDone,
-                  text: Provider.of<TaskData>(context).models![index].taskTitle,
-                  onListChecked: (value) {
-                    Provider.of<TaskData>(context).models![index].isDone =
-                        !Provider.of<TaskData>(context).models![index].isDone;
-                  },
-                );
-              },
-            ),
+            child: WhatToDoListViewWidget(),
           )),
         ],
       )),
     );
   }
 }
+
+
