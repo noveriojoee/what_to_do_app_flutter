@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:what_to_do_app/Navigation.dart';
 import 'package:what_to_do_app/Screens/AddTaskScreen.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
 import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
@@ -32,19 +31,34 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  void showAddTaskScreen(BuildContext context,String detailScreen) {
-    if (detailScreen == 'bottom') {
-      showModalBottomSheet<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AddTaskScreen();
-        },
-      );
-    }else{
-      Navigator.of(context).pushNamed('/addTaskScreen');
-    }
-  }
+  // void showAddTaskScreen(BuildContext context, String detailScreen) {
+  //   if (detailScreen == 'bottom') {
+  //     showModalBottomSheet<void>(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AddTaskScreen();
+  //       },
+  //     );
+  //   } else {
+  //     Navigator.push(context, gotoThirdPage());
+  //   }
+  // }
 
+  Route gotoThirdPage() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => AddTaskScreen('_taskTitle', 'xx'),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        final tween = Tween(begin: begin, end: end);
+        final offsetAnimation = animation.drive(tween);
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            showAddTaskScreen(context,'push');
+            Navigator.push(context, gotoThirdPage());
           });
         },
         child: Icon(Icons.add),
