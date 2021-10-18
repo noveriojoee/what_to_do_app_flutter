@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AddTaskScreen extends StatefulWidget {
   AddTaskScreen({Key? key}) : super(key: key);
@@ -42,24 +43,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
               RawMaterialButton(
                   onPressed: () {
-                    print('button pressed');
+                    setState(() {
+                      Navigator.pop(context);
+                    });
                   },
                   child: Container(
-                    color: Colors.lightBlue,
+                    alignment: Alignment.center,
                     height: 50,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          'Add Task',
-                          style: TextStyle(color: Colors.white),
-                        )
-                      ],
-                    ),
+                    color: Colors.lightBlue,
+                    child: Text('Add',style: TextStyle(color: Colors.white),)
                   ))
             ],
           ),
