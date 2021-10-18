@@ -2,22 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:what_to_do_app/Models/TaskItemModel.dart';
 
-class AddTaskScreen extends StatefulWidget {
-  const AddTaskScreen({Key? key}): super(key: key);
-
-  @override
-  _AddTaskScreenState createState() => _AddTaskScreenState();
-}
-
-class _AddTaskScreenState extends State<AddTaskScreen> {
-  String? taskTitle;
-  String? taskDescription;
+class AddTaskScreen extends StatelessWidget {
+  String? _taskTitle;
+  String? _taskDescription;
 
   final TextEditingController _tfTitleController = TextEditingController();
   final TextEditingController _tfTitleDescriptionController =
       TextEditingController();
 
-  _AddTaskScreenState({this.taskTitle, this.taskDescription});
+  AddTaskScreenState(String taskTitle, String taskDescription) {
+    _tfTitleController.text = taskTitle;
+    _tfTitleDescriptionController.text = taskDescription;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +32,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 textAlign: TextAlign.center,
                 controller: _tfTitleController,
                 onChanged: (newValue) {
-                  this.taskTitle = newValue;
+                  this._taskTitle = newValue;
                 },
               ),
               Text(
@@ -47,7 +43,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 textAlign: TextAlign.center,
                 controller: _tfTitleDescriptionController,
                 onChanged: (newValue) {
-                  this.taskDescription = newValue;
+                  this._taskDescription = newValue;
                 },
               ),
               SizedBox(
@@ -55,12 +51,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
               RawMaterialButton(
                   onPressed: () {
-                    setState(() {
-                      Navigator.pop(
-                          context,
-                          TaskItemModel(
-                              this.taskTitle!, this.taskDescription!, false));
-                    });
+                    Navigator.pop(context,TaskItemModel(this._taskTitle!, this._taskDescription!, false));
                   },
                   child: Container(
                       alignment: Alignment.center,
