@@ -15,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   List<TaskItemModel>? models;
 
   _MainScreenState({this.models}) {
-    models = [TaskItemModel('taskTitle', 'taskDescription', false)];
+    models = [];
   }
 
   void showMessage(BuildContext context) {
@@ -54,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
   Route gotToAddTaskScreen() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          AddTaskScreen('_taskTitle', 'xx'),
+          AddTaskScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0);
         const end = Offset.zero;

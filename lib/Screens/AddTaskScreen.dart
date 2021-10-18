@@ -3,29 +3,21 @@ import 'package:flutter/widgets.dart';
 import 'package:what_to_do_app/Models/TaskItemModel.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  String? _taskTitle;
-  String? _taskDescription;
-
-  AddTaskScreen(this._taskTitle, this._taskDescription);
+  const AddTaskScreen({Key? key}): super(key: key);
 
   @override
-  _AddTaskScreenState createState() => _AddTaskScreenState(_taskTitle!, _taskDescription!);
+  _AddTaskScreenState createState() => _AddTaskScreenState();
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   String? taskTitle;
   String? taskDescription;
+
   final TextEditingController _tfTitleController = TextEditingController();
   final TextEditingController _tfTitleDescriptionController =
       TextEditingController();
 
-  _AddTaskScreenState(String taskTitle, String taskDescription) {
-    this.taskTitle = taskTitle;
-    this.taskDescription = taskDescription;
-
-    _tfTitleController.text = this.taskTitle != null ? this.taskTitle! : '';
-    _tfTitleDescriptionController.text = this.taskDescription != null ? this.taskDescription! : '';
-  }
+  _AddTaskScreenState({this.taskTitle, this.taskDescription});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +36,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 textAlign: TextAlign.center,
                 controller: _tfTitleController,
                 onChanged: (newValue) {
-                  taskTitle = newValue;
+                  this.taskTitle = newValue;
                 },
               ),
               Text(
@@ -55,7 +47,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 textAlign: TextAlign.center,
                 controller: _tfTitleDescriptionController,
                 onChanged: (newValue) {
-                  taskDescription = newValue;
+                  this.taskDescription = newValue;
                 },
               ),
               SizedBox(
@@ -64,7 +56,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               RawMaterialButton(
                   onPressed: () {
                     setState(() {
-                      Navigator.pop(context, TaskItemModel(this.taskTitle!, this.taskDescription!, false));
+                      Navigator.pop(
+                          context,
+                          TaskItemModel(
+                              this.taskTitle!, this.taskDescription!, false));
                     });
                   },
                   child: Container(
