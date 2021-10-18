@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:what_to_do_app/Models/TaskItemModel.dart';
 
 class AddTaskScreen extends StatefulWidget {
   String? _taskTitle;
@@ -43,7 +44,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 textAlign: TextAlign.center,
                 controller: _tfTitleController,
                 onChanged: (newValue) {
-                  print(newValue);
+                  taskTitle = newValue;
                 },
               ),
               Text(
@@ -54,7 +55,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 textAlign: TextAlign.center,
                 controller: _tfTitleDescriptionController,
                 onChanged: (newValue) {
-                  print(newValue);
+                  taskDescription = newValue;
                 },
               ),
               SizedBox(
@@ -63,7 +64,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               RawMaterialButton(
                   onPressed: () {
                     setState(() {
-                      Navigator.pop(context);
+                      Navigator.pop(context, TaskItemModel(this.taskTitle!, this.taskDescription!, false));
                     });
                   },
                   child: Container(

@@ -29,9 +29,10 @@ class ListItemTile extends StatelessWidget {
         ),
       ),
       trailing: Checkbox(
-        value: false,
+        value: _isCheck,
         onChanged: (value) {
-          _onListChecked(this);
+          _isCheck = !_isCheck;
+          _onListChecked(_isCheck);
         },
       ),
     );

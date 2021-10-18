@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:what_to_do_app/Models/TaskItemModel.dart';
 import 'package:what_to_do_app/Screens/AddTaskScreen.dart';
 import 'package:what_to_do_app/Widgets/AppBar/AppBarWidget.dart';
 import 'package:what_to_do_app/Widgets/ListItems/ListItemTile.dart';
@@ -11,6 +12,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<TaskItemModel>? models;
+
+  _MainScreenState({this.models}) {
+    models = [TaskItemModel('taskTitle', 'taskDescription', false)];
+  }
+
   void showMessage(BuildContext context) {
     showDialog<String>(
       context: context,
@@ -44,9 +51,10 @@ class _MainScreenState extends State<MainScreen> {
   //   }
   // }
 
-  Route gotoThirdPage() {
+  Route gotToAddTaskScreen() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => AddTaskScreen('_taskTitle', 'xx'),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          AddTaskScreen('_taskTitle', 'xx'),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0);
         const end = Offset.zero;
@@ -64,9 +72,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
+          final model = await Navigator.push(context, gotToAddTaskScreen());
           setState(() {
-            Navigator.push(context, gotoThirdPage());
+            if (model != null) models!.add((model as TaskItemModel));
           });
         },
         child: Icon(Icons.add),
@@ -80,13 +89,15 @@ class _MainScreenState extends State<MainScreen> {
               child: Container(
             padding: EdgeInsets.all(20),
             child: ListView.builder(
-              itemCount: 20,
+              itemCount: this.models!.length,
               itemBuilder: (context, index) {
                 return ListItemTile(
-                  isCheck: false,
-                  text: 'xx',
+                  isCheck: this.models![index].isDone,
+                  text: this.models![index].taskTitle,
                   onListChecked: (value) {
-                    
+                    setState(() {
+                      this.models![index].isDone = !this.models![index].isDone;
+                    });
                   },
                 );
               },
