@@ -27,7 +27,7 @@
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
-.lock
+*.lock
 .pub-cache/
 .pub/
 .gradle
