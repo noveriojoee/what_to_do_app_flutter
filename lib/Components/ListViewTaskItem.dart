@@ -26,7 +26,7 @@ class TaskCheckBox extends StatelessWidget {
 	final bool isChecked;
 
 	//This is awesome, we can pass in method or function as variable, instead of creating interface or protocol in ios
-	final Function checkboxCallback;
+	final Function(bool?)? checkboxCallback;
 
 	//What is this? constructor or what?
 	TaskCheckBox(this.isChecked, this.checkboxCallback);

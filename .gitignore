@@ -18,56 +18,69 @@
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
-#.vscode/
+.vscode/launch.json
 
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
+.fvm/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
+.lock
 .pub-cache/
 .pub/
+.gradle
 /build/
+ios/Flutter/.last_build_id
 
-# Android related
-**/android/**/gradle-wrapper.jar
-**/android/.gradle
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
+# Web related
+lib/generated_plugin_registrant.dart
+lib/generated/*
 
-# iOS/XCode related
-**/ios/**/*.mode1v3
-**/ios/**/*.mode2v3
-**/ios/**/*.moved-aside
-**/ios/**/*.pbxuser
-**/ios/**/*.perspectivev3
-**/ios/**/*sync/
-**/ios/**/.sconsign.dblite
-**/ios/**/.tags*
-**/ios/**/.vagrant/
-**/ios/**/DerivedData/
-**/ios/**/Icon?
-**/ios/**/Pods/
-**/ios/**/.symlinks/
-**/ios/**/profile
-**/ios/**/xcuserdata
-**/ios/.generated/
-**/ios/Flutter/App.framework
-**/ios/Flutter/Flutter.framework
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
-**/ios/Flutter/flutter_assets/
-**/ios/Flutter/flutter_export_environment.sh
-**/ios/ServiceDefinitions.json
-**/ios/Runner/GeneratedPluginRegistrant.*
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
 
 # Exceptions to above rules.
-!**/ios/**/default.mode1v3
-!**/ios/**/default.mode2v3
-!**/ios/**/default.pbxuser
-!**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Config file
+environment_config.dart
+
+# firebase config
+**/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# codemagic-ref
+codemagic-2.yaml
+codemagic-x.yaml
+
+# ignore local properties
+local.properties
+
+# ignore .run folder
+.run/
+
+# ignore coverage folder
+/coverage/*
+
+# ignore build 2
+build 2/*
+
+# ignore build runner & regarding generate files
+*.mocks.dart
+*.g.dart
+
+# ignore cloud integration
+*.icloud
+/build 2/
+
+#ignore report from dart_metric
+metrics/
+
+#ignore info plist and entitlemnts
+ios/Runner/Info.plist
+ios/Runner/Lively.entitlements

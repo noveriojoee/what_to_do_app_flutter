@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:what_to_do_app/Navigation.dart';
 import 'package:what_to_do_app/Components/ListViewWidget.dart';
 import 'package:what_to_do_app/Screens/PopUp/AddTaskScreen.dart';
 
+
 class MainPage extends StatefulWidget {
   const MainPage({
-    Key key,
+    Key? key,
   }) : super(key: key);
   _MainPageState createState() => _MainPageState();
 }

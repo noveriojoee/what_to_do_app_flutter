@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 class AddTaskScreen extends StatefulWidget {
   @override
@@ -7,8 +7,6 @@ class AddTaskScreen extends StatefulWidget {
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
-	String _task;
-
 	void _buttonAddClick(context){
 
 	}
@@ -33,8 +31,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 style: TextStyle(fontSize: 25),
               ),
 						TextField(textAlign: TextAlign.center, autofocus: true,),
-						FlatButton(onPressed: ()=>_buttonAddClick(context),
-							color: Colors.lightBlueAccent,
+						TextButton(onPressed: ()=>_buttonAddClick(context),
 							child: Text("ADD"),)
             ],
           ),
