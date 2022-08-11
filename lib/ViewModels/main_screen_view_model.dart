@@ -21,7 +21,7 @@ class MainScreenViewModel extends BaseViewModel {
   }
   
   Future<void> onAddTaskClicked(String textValue) async {
-    final data = TaskModel(description: textValue,title: textValue);
+    final data = TaskModel(description: textValue,title: textValue, isDone: false);
     _tasksData?.add(data);
     notifyListeners();
   }
