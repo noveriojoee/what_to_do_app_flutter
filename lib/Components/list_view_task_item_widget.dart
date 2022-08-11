@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:what_to_do_app/Models/TaskModel.dart';
+import 'package:what_to_do_app/Models/task_model.dart';
 
 class ListViewTaskItem extends StatefulWidget {
   final TaskModel data;
@@ -30,7 +30,7 @@ class _ListViewTaskItemState extends State<ListViewTaskItem> {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        widget.data.taskDescription,
+        widget.data.description,
         style: TextStyle(
             decoration: _isChecked == true ? TextDecoration.lineThrough : null),
       ),

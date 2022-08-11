@@ -28,6 +28,8 @@
 .flutter-plugins-dependencies
 .packages
 *.lock
+*.freezed.dart
+*.g.dart
 .pub-cache/
 .pub/
 .gradle

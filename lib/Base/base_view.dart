@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:what_to_do_app/Base/BaseViewModel.dart';
+import 'package:what_to_do_app/Base/base_view_model.dart';
 import 'package:what_to_do_app/Setup.dart';
 
 final RouteObserver<ModalRoute<void>> routeObserver =

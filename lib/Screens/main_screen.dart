@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:what_to_do_app/Base/BaseView.dart';
-import 'package:what_to_do_app/Components/ListViewTaskItem.dart';
-import 'package:what_to_do_app/Screens/PopUp/AddTaskScreen.dart';
-import 'package:what_to_do_app/ViewModels/MainScreenViewModel.dart';
+import 'package:what_to_do_app/Base/base_view.dart';
+import 'package:what_to_do_app/Components/list_view_task_item_widget.dart';
+import 'package:what_to_do_app/Screens/PopUp/add_task_widget.dart';
+import 'package:what_to_do_app/ViewModels/main_screen_view_model.dart';
 
 class MainScreen extends BaseView<MainScreenViewModel> {
   @override
