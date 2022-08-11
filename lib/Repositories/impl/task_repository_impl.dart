@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
+import 'package:what_to_do_app/Models/DTO/get_all_task_dto.dart';
 import 'package:what_to_do_app/Models/task_model.dart';
-import 'package:what_to_do_app/Repositories/dto/get_all_task_dto.dart';
 import 'package:what_to_do_app/Repositories/i_task_repository.dart';
 import 'package:http/http.dart' as networking;
 
