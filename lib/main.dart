@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:what_to_do_app/Screens/main_screen.dart';
-
-
+import 'package:what_to_do_app/routes.gr.dart';
 import 'Setup.dart';
 
 void main() {
@@ -10,9 +8,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainScreen(),);
+    return MaterialApp.router(
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _appRouter.delegate());
   }
 }
-

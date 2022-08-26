@@ -30,6 +30,7 @@
 *.lock
 *.freezed.dart
 *.g.dart
+*.gr.dart
 .pub-cache/
 .pub/
 .gradle

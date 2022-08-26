@@ -70,7 +70,7 @@ class MainScreen extends BaseView<MainScreenViewModel> {
                   child: ListView.builder(
                     itemCount: viewModel.taskDataCount,
                     itemBuilder: (context, index) {
-                      return ListViewTaskItem(data: viewModel.taskData[index]);
+                      return ListViewTaskItem(data: viewModel.taskData[index], onTaskSelected: (data) => viewModel.onTaskSelected(data, context),);
                   },),
                 ),
               )

@@ -3,8 +3,9 @@ import 'package:what_to_do_app/Models/task_model.dart';
 
 class ListViewTaskItem extends StatefulWidget {
   final TaskModel data;
+  final Function(TaskModel data) onTaskSelected;
 
-  const ListViewTaskItem({Key? key, required this.data}) : super(key: key);
+  const ListViewTaskItem({Key? key, required this.data, required this.onTaskSelected}) : super(key: key);
 
   @override
   State<ListViewTaskItem> createState() => _ListViewTaskItemState();
@@ -29,6 +30,9 @@ class _ListViewTaskItemState extends State<ListViewTaskItem> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        widget.onTaskSelected(widget.data);
+      },
       title: Text(
         widget.data.description,
         style: TextStyle(
